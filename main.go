@@ -41,8 +41,8 @@ func (o *opts) commonFlagBuilder(fs *flag.FlagSet) {
 
 func run(args []string) error {
 	// default opts
-	o.mdt.BodyFormat = "{{range .Cols}}{{.}}\t{{end}}"
-	o.mdt.HeaderFormat = "{{range .Cols}}{{.}}\t{{end}}"
+	o.mdt.BodyFormat = `{{range .Cols}}{{.}}\t{{end}}`
+	o.mdt.HeaderFormat = `{{range .Cols}}{{.}}\t{{end}}`
 
 	// parse CLI
 	root := &climan.Command{
