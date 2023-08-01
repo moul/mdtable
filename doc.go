@@ -1,4 +1,4 @@
-// Copyright © 2021 Manfred Touron <manfred.life>
+// Copyright © 2023 Manfred Touron <manfred.life>
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 
 // message from the author:
@@ -27,4 +27,4 @@
 //	|/  |       |  \    \ /                    /  ' \/ _ \/ // / / |
 //	||  |       |  |    | |                   /_/_/_/\___/\_,_/_/  |
 //	+--------------------------------------------------------------+
-package main // import "moul.io/golang-repo-template"
+package main // import "moul.io/mdtable"
