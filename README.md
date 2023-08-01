@@ -34,6 +34,19 @@ FLAGS
 exit status 1
 ```
 
+[embedmd]:# (.tmp/usage-csv.txt console)
+```console
+foo@bar:~$ cat testdata/file2.csv
+Name,Age,Email
+John Doe,30,john@example.com
+Jane Smith,25,jane@example.com
+foo@bar:~$ cat testdata/file2.csv | mdtable csv
+|Name       |Age |Email            |
+|----       |--- |-----            |
+|John Doe   |30  |john@example.com |
+|Jane Smith |25  |jane@example.com |
+```
+
 ## Install
 
 ### Using go
