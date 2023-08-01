@@ -39,7 +39,8 @@ func Generate(d Data, o Opts) (string, error) {
 
 	// generate the table
 	var sb strings.Builder
-	w := tabwriter.NewWriter(&sb, 0, 8, 1, ' ', tabwriter.Debug) // Debug is a way to have tabwriter adding '|' after the columns.
+	// Debug is a way to have tabwriter adding '|' after the columns.
+	w := tabwriter.NewWriter(&sb, 0, 8, 1, ' ', tabwriter.Debug) //nolint:gomnd
 
 	// header
 	var rawHeader bytes.Buffer
@@ -48,7 +49,7 @@ func Generate(d Data, o Opts) (string, error) {
 	}
 	fmt.Fprintf(w, "%s\n", rawHeader.String())
 	// post-header delimiter
-	re := regexp.MustCompile("[^|\\s]")
+	re := regexp.MustCompile(`[^|\t]`)
 	delimLine := re.ReplaceAllString(rawHeader.String(), "-")
 	fmt.Fprintf(w, "%s\n", delimLine)
 

@@ -25,22 +25,18 @@ func main() {
 }
 
 type opts struct {
-	debug bool
-	mdt   mdtable.Opts
-	csv   struct {
-		// NoHeader bool
+	mdt mdtable.Opts
+	csv struct {
+		noHeader bool
 	}
-	json struct {
-		// json parsing opts
-	}
+	// json struct {}
 }
 
 var o opts
 
 func (o *opts) commonFlagBuilder(fs *flag.FlagSet) {
-	fs.BoolVar(&o.debug, "debug", o.debug, "debug mode")
-	fs.StringVar(&o.mdt.BodyFormat, "mdbody", o.mdt.BodyFormat, "mdtable body format")
-	fs.StringVar(&o.mdt.HeaderFormat, "mdhead", o.mdt.HeaderFormat, "mdtable header format")
+	fs.StringVar(&o.mdt.BodyFormat, "md-body", o.mdt.BodyFormat, "mdtable body format")
+	fs.StringVar(&o.mdt.HeaderFormat, "md-header", o.mdt.HeaderFormat, "mdtable header format")
 }
 
 func run(args []string) error {
@@ -63,16 +59,18 @@ func run(args []string) error {
 				ShortHelp:  "CSV to markdown table",
 				FlagSetBuilder: func(fs *flag.FlagSet) {
 					o.commonFlagBuilder(fs)
+					fs.BoolVar(&o.csv.noHeader, "csv-no-header", o.csv.noHeader, "csv: no header, just body")
 				},
 				Exec: doCSV,
-			}, {
+			},
+			/*{
 				Name:       "json",
 				ShortUsage: "mdtable json [flags]",
 				ShortHelp:  "JSON to markdown table",
 				FlagSetBuilder: func(fs *flag.FlagSet) {
 					o.commonFlagBuilder(fs)
 				},
-			},
+			},*/
 		},
 	}
 	if err := root.Parse(args); err != nil {
@@ -108,10 +106,19 @@ func doCSV(_ context.Context, args []string) error {
 		row := mdtable.Row{
 			Cols: record,
 		}
-		if i == 0 {
+		if i == 0 && !o.csv.noHeader {
 			data.Header = row
 		} else {
 			data.Rows = append(data.Rows, row)
+		}
+	}
+
+	if o.csv.noHeader {
+		data.Header = mdtable.Row{
+			Cols: make([]string, len(data.Rows[0].Cols)),
+		}
+		for i := range data.Rows[0].Cols {
+			data.Header.Cols[i] = "<!-- -->"
 		}
 	}
 
