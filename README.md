@@ -28,9 +28,9 @@ USAGE
   mdtable csv [flags]
 
 FLAGS
-  -debug false  debug mode
-  -mdbody ...   mdtable body format
-  -mdhead ...   mdtable header format
+  -csv-no-header false                      csv: no header, just body
+  -md-body {{range .Cols}}{{.}}\t{{end}}    mdtable body format
+  -md-header {{range .Cols}}{{.}}\t{{end}}  mdtable header format
 exit status 1
 ```
 
