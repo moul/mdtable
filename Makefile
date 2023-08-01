@@ -13,8 +13,16 @@ generate: install
 
 	echo 'foo@bar:~$$ cat testdata/file2.csv' > .tmp/usage-csv.txt
 	cat testdata/file2.csv >> .tmp/usage-csv.txt
+	echo >> .tmp/usage-csv.txt
 	echo 'foo@bar:~$$ cat testdata/file2.csv | mdtable csv' >> .tmp/usage-csv.txt
 	(cat testdata/file2.csv | go run . csv 2>&1 || true) >> .tmp/usage-csv.txt
+	echo >> .tmp/usage-csv.txt
+	echo 'foo@bar:~$$ cat testdata/file2.csv | mdtable csv -csv-no-header' >> .tmp/usage-csv.txt
+	(cat testdata/file2.csv | go run . csv -csv-no-header 2>&1 || true) >> .tmp/usage-csv.txt
+	echo >> .tmp/usage-csv.txt
+	echo 'foo@bar:~$$ cat testdata/file2.csv | mdtable csv -md-header="foo\\tbar\\tbaz\\t" -md-body="{{range .Cols}}<<{{.}}>>\\t{{end}}"' >> .tmp/usage-csv.txt
+	(cat testdata/file2.csv | go run . csv -md-header="foo\\tbar\\tbaz\\t" -md-body="{{range .Cols}}<<{{.}}>>\\t{{end}}" 2>&1 || true) >> .tmp/usage-csv.txt
+
 
 	go run github.com/campoy/embedmd -w README.md
 	rm -rf .tmp

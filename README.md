@@ -40,11 +40,25 @@ foo@bar:~$ cat testdata/file2.csv
 Name,Age,Email
 John Doe,30,john@example.com
 Jane Smith,25,jane@example.com
+
 foo@bar:~$ cat testdata/file2.csv | mdtable csv
 |Name       |Age |Email            |
 |----       |--- |-----            |
 |John Doe   |30  |john@example.com |
 |Jane Smith |25  |jane@example.com |
+
+foo@bar:~$ cat testdata/file2.csv | mdtable csv -csv-no-header
+|<!-- -->   |<!-- --> |<!-- -->         |
+|--------   |-------- |--------         |
+|Name       |Age      |Email            |
+|John Doe   |30       |john@example.com |
+|Jane Smith |25       |jane@example.com |
+
+foo@bar:~$ cat testdata/file2.csv | mdtable csv -md-header="foo\tbar\tbaz\t" -md-body="{{range .Cols}}<<{{.}}>>\t{{end}}"
+|foo            |bar    |baz                  |
+|---            |---    |---                  |
+|<<John Doe>>   |<<30>> |<<john@example.com>> |
+|<<Jane Smith>> |<<25>> |<<jane@example.com>> |
 ```
 
 ## Install
