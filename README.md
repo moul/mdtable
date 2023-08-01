@@ -1,6 +1,7 @@
 # mdtable
 
-:smile: mdtable
+This Go program converts a CSV/JSON file into a Markdown table using a customizable format string.
+It leverages the power of the `tabwriter` and `text/template` packages to generate neatly formatted tables from CSV/JSON data.
 
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/moul.io/mdtable)
 [![License](https://img.shields.io/badge/license-Apache--2.0%20%2F%20MIT-%2397ca00.svg)](https://github.com/moul/mdtable/blob/main/COPYRIGHT)
@@ -23,13 +24,14 @@
 [embedmd]:# (.tmp/usage.txt console)
 ```console
 foo@bar:~$ mdtable
-            _                                                   _                      _        _
- __ _  ___ | | __ _  _ _   __ _  ___  _ _  ___  _ __  ___  ___ | |_  ___  _ __   _ __ | | __ _ | |_  ___
-/ _` |/ _ \| |/ _` || ' \ / _` ||___|| '_|/ -_)| '_ \/ _ \|___||  _|/ -_)| '  \ | '_ \| |/ _` ||  _|/ -_)
-\__, |\___/|_|\__,_||_||_|\__, |     |_|  \___|| .__/\___/      \__|\___||_|_|_|| .__/|_|\__,_| \__|\___|
-|___/                     |___/                |_|                              |_|
-12 CPUs, /home/moul/.local/bin/mdtable, fwrz, go1.16.5
-[]
+USAGE
+  mdtable csv [flags]
+
+FLAGS
+  -debug false  debug mode
+  -mdbody ...   mdtable body format
+  -mdhead ...   mdtable header format
+exit status 1
 ```
 
 ## Install
