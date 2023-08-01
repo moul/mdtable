@@ -1,6 +1,6 @@
 # mdtable
 
-This Go program converts a CSV/JSON file into a Markdown table using a customizable format string.
+This Go program converts a CSV/JSON file into a Markdown table using a configurable format string.
 It leverages the power of the `tabwriter` and `text/template` packages to generate neatly formatted tables from CSV/JSON data.
 
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/moul.io/mdtable)
