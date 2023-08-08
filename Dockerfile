@@ -14,7 +14,7 @@ COPY            . ./
 RUN             make install
 
 # minimalist runtime
-FROM alpine:3.18.2
+FROM alpine:3.18.3
 LABEL           org.label-schema.build-date=$BUILD_DATE \
                 org.label-schema.name="mdtable" \
                 org.label-schema.description="" \
