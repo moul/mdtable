@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/campoy/embedmd v1.0.0
+	github.com/campoy/embedmd/v2 v2.0.0
 	github.com/peterbourgon/ff/v3 v3.4.0
 	github.com/tailscale/depaware v0.0.0-20210622194025-720c4b409502
 	go.uber.org/goleak v1.2.1
